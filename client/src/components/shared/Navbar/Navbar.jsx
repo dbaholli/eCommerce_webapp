@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MdArrowRightAlt, MdKeyboardArrowDown } from "react-icons/md";
 import { BiSearch, BiMenu } from "react-icons/bi";
 import Backdrop from "../Backdrop/Backdrop";
+import { FcShop } from "react-icons/fc";
 
 const Navbar = () => {
   const [search, setSearch] = useState(false);
@@ -63,7 +64,8 @@ const Navbar = () => {
             {/* <BiMenu /> */}
             <Link to="/" className="inline">
               {/* <div className="nav-icon" /> */}
-              <h1>eCommerce</h1>
+              <FcShop />
+              <h1>e-Commerce</h1>
             </Link>
           </div>
         </div>
