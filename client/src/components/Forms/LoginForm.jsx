@@ -4,7 +4,8 @@ import { BiLock } from "react-icons/bi";
 import { Link } from "react-router-dom";
 // import { ReactComponent as Logo } from "../../assets/Logo.svg";
 import "./LoginForm.scss";
-import { FcShop } from "react-icons/fc";
+
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

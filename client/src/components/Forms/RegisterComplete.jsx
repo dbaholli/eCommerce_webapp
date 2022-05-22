@@ -1,78 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./RegisterForm.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLock } from "react-icons/bi";
-import { BsPerson } from "react-icons/bs";
 
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
-const RegisterForm = () => {
+const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setEmail(window.localStorage.getItem("emailForRegister"));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("ENV => ", process.env.REACT_APP_REGISTER_REDIRECT_URL);
-    const config = {
-      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
-      handleCodeInApp: true,
-    };
-
-    await auth.sendSignInLinkToEmail(email, config);
-    toast.success(`Email is sent to ${email}. Click the link to complete your
-    registration`);
-
-    //kjo e bon store email adresen qe user e ka shtyp ne localstorage te browser
-    window.localStorage.setItem("emailForRegister", email);
-    setEmail("");
   };
 
   return (
     <div className="signup-form-container">
       <div className="signup-right">
         <div className="signup-title-container">
-          <h1>Register on e-Commerce</h1>
-          <p>Enter your details below to start registration process</p>
+          <h1>Complete Register</h1>
         </div>
-        <form
-          action=""
-          className="signup-form"
-          onSubmit={handleSubmit}
-          value={email}
-        >
-          <div className="signup-name-inputs">
-            <div className="signup-input-container">
-              <label htmlFor="first-name">
-                <p>First Name</p>
-              </label>
-              <div className="signup-input">
-                <label htmlFor="first-name">
-                  <BsPerson />
-                </label>
-                <input
-                  type="text"
-                  id="first-name"
-                  placeholder="Enter your first name"
-                />
-              </div>
-            </div>
-            <div className="signup-input-container">
-              <label htmlFor="last-name">
-                <p>Last Name</p>
-              </label>
-              <div className="signup-input">
-                <label htmlFor="last-name">
-                  <BsPerson />
-                </label>
-                <input
-                  type="text"
-                  id="last-name"
-                  placeholder="Enter your last name"
-                />
-              </div>
-            </div>
-          </div>
+        <form action="" className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-email-inputs">
             <div className="signup-input-container">
               <label htmlFor="signup-email">
@@ -87,8 +40,7 @@ const RegisterForm = () => {
                   id="signup-email"
                   placeholder="Enter your email address"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoFocus
+                  disabled
                 />
               </div>
             </div>
@@ -106,6 +58,9 @@ const RegisterForm = () => {
                   type="password"
                   id="signup-password"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoFocus
                 />
               </div>
             </div>
@@ -134,14 +89,11 @@ const RegisterForm = () => {
               </p>
             </label>
           </div>
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Complete Registration" />
         </form>
-        <p className="dont-have-acc">
-          Have an account? <Link to="/login"> Login </Link>
-        </p>
       </div>
     </div>
   );
 };
 
-export default RegisterForm;
+export default RegisterComplete;
