@@ -103,13 +103,13 @@ const Sidebar = (props) => {
       <div className="sidebar-auth">
         <div className="auth-navigations">
           <div className="login-link-container">
-            <Link to="/" className="mobile-login-link">
+            <Link to="/login" className="mobile-login-link">
               Log In
             </Link>
           </div>
           <div className="login-link-container">
-            <Link to="/" className="mobile-login-link">
-              Sign Up
+            <Link to="/register" className="mobile-login-link">
+              Register
             </Link>
           </div>
         </div>

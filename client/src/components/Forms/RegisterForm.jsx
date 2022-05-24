@@ -42,7 +42,7 @@ const RegisterForm = () => {
           value={email}
         >
           <div className="signup-name-inputs">
-            <div className="signup-input-container">
+            {/* <div className="signup-input-container">
               <label htmlFor="first-name">
                 <p>First Name</p>
               </label>
@@ -71,7 +71,7 @@ const RegisterForm = () => {
                   placeholder="Enter your last name"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="signup-email-inputs">
             <div className="signup-input-container">
@@ -93,7 +93,7 @@ const RegisterForm = () => {
               </div>
             </div>
           </div>
-          <div className="signup-password-inputs">
+          {/* <div className="signup-password-inputs">
             <div className="signup-input-container">
               <label htmlFor="signup-password">
                 <p>Password</p>
@@ -124,7 +124,7 @@ const RegisterForm = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="signup-checkbox-inputs">
             <input type="checkbox" id="signup-checkbox" />
             <label htmlFor="signup-checkbox">
@@ -134,7 +134,7 @@ const RegisterForm = () => {
               </p>
             </label>
           </div>
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Register" />
         </form>
         <p className="dont-have-acc">
           Have an account? <Link to="/login"> Login </Link>
