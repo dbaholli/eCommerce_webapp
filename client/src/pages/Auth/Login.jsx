@@ -1,12 +1,14 @@
-import React from 'react'
-import LoginForm from '../../components/Forms/LoginForm'
+import React from "react";
+import { ToastContainer } from "react-toastify";
+import LoginForm from "../../components/Forms/LoginForm";
 
 const Login = () => {
   return (
-    <div className='login-page'>
-        <LoginForm />
+    <div className="login-page">
+      <ToastContainer />
+      <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

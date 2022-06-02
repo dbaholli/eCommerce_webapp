@@ -8,11 +8,17 @@ import { MdArrowRightAlt, MdKeyboardArrowDown } from "react-icons/md";
 import { BiSearch, BiMenu } from "react-icons/bi";
 import Backdrop from "../Backdrop/Backdrop";
 import { FcShop } from "react-icons/fc";
+import firebase from "firebase";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const [search, setSearch] = useState(false);
   const [sidebar, setSidebar] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  let dispatch = useDispatch();
+  let history = useHistory();
 
   const showSearchBar = () => {
     setSearch(!search);
@@ -20,6 +26,16 @@ const Navbar = () => {
 
   const showSidebar = () => {
     setSidebar(!sidebar);
+  };
+
+  const logout = () => {
+    firebase.auth().signOut();
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+
+    history.push("/login");
   };
 
   useEffect(() => {
@@ -127,6 +143,11 @@ const Navbar = () => {
           <div className="login-link-container">
             <Link to="/register" className="login-link signup">
               Register
+            </Link>
+          </div>
+          <div className="login-link-container">
+            <Link className="login-link signup" onClick={logout}>
+              Logout
             </Link>
           </div>
         </div>

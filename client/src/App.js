@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer, toastContainer } from "react-toastify";
@@ -9,7 +9,31 @@ import Register from "./pages/Auth/Register";
 import Home from "./pages/Home";
 import RegisterComplete from "./components/Forms/RegisterComplete";
 
-function App() {
+import { auth } from "./firebase";
+import { useDispatch } from "react-redux";
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const idTokenResult = await user.getIdTokenResult();
+        console.log("user", user);
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            // name: user.displayName,
+            email: user.email,
+            token: idTokenResult.token,
+          },
+        });
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <Router>
       <Navbar />
@@ -23,6 +47,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
