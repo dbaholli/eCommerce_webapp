@@ -41,6 +41,27 @@ const LoginForm = () => {
     }
   };
 
+  const googleLogin = async () => {
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const { user } = result;
+        const idTokenResult = await user.getIdTokenResult();
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            // name: user.displayName,
+            email: user.email,
+            token: idTokenResult.token,
+          },
+        });
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
 
   return (
     <div className="log-in-form-container">
