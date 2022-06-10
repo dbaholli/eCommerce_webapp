@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./RegisterForm.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLock } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
-
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
+
+  const { user } = useSelector((state) => ({ ...state }));
+
+  let history = useHistory();
+
+
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

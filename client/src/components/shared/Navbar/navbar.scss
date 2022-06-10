@@ -122,6 +122,26 @@
           color: #fff;
         }
       }
+      .logout-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        .userdetailp {
+          font-size: 15px;
+          font-weight: bold;
+        }
+        &:hover a {
+          background: #416aff;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          // padding: 1em 1.5em;
+          padding: 10px 30px;
+          border-radius: 7.5px;
+        }
+      }
     }
     .hamburger-menu {
       display: none;

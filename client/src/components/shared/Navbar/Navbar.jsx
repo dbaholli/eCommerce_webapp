@@ -9,7 +9,7 @@ import { BiSearch, BiMenu } from "react-icons/bi";
 import Backdrop from "../Backdrop/Backdrop";
 import { FcShop } from "react-icons/fc";
 import firebase from "firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
@@ -18,6 +18,8 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   let dispatch = useDispatch();
+  let { user } = useSelector((state) => ({ ...state }));
+
   let history = useHistory();
 
   const showSearchBar = () => {
@@ -53,7 +55,7 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${isSticky ? "sticky" : ""}`}>
-      <div
+      {/* <div
         className="nav-searchbar"
         style={{ display: search ? "block" : "none", zIndex: zIndex }}
       >
@@ -73,7 +75,7 @@ const Navbar = () => {
           ) : null}
           <MdArrowRightAlt style={{ display: "block !important" }} />
         </div>
-      </div>
+      </div> */}
       <div className="navbar-content">
         <div className="title-icon inline">
           <div className="nav-title inline">
@@ -111,45 +113,43 @@ const Navbar = () => {
               <MdKeyboardArrowDown />
             </Link>
           </div>
-          {/* <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              Page
-              <MdKeyboardArrowDown />
-            </Link>
-          </div>
-          <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              About us
-              <MdKeyboardArrowDown />
-            </Link>
-          </div> */}
         </div>
         <div className="nav-login-signup">
-          <div onClick={showSearchBar} className="search-box inline">
+          {/* <div onClick={showSearchBar} className="search-box inline">
             <label htmlFor="navsearch">
               <BiSearch className={`${isSticky ? "sticky-nav-colors" : ""}`} />
             </label>
-          </div>
-          <div className="login-link-container">
-            <Link
-              to="/login"
-              className={`login-link login ${
-                isSticky ? "sticky-nav-colors" : ""
-              }`}
-            >
-              Login
-            </Link>
-          </div>
-          <div className="login-link-container">
-            <Link to="/register" className="login-link signup">
-              Register
-            </Link>
-          </div>
-          <div className="login-link-container">
-            <Link className="login-link signup" onClick={logout}>
-              Logout
-            </Link>
-          </div>
+          </div> */}
+
+          {!user && (
+            <div className="login-link-container">
+              <Link
+                to="/login"
+                className={`login-link login ${
+                  isSticky ? "sticky-nav-colors" : ""
+                }`}
+              >
+                Login
+              </Link>
+            </div>
+          )}
+
+          {!user && (
+            <div className="login-link-container">
+              <Link to="/register" className="login-link signup">
+                Register
+              </Link>
+            </div>
+          )}
+
+          {user && (
+            <div className="logout-container">
+              <p className="userdetailp">{user.email && user.email.split("@")[0]}</p>
+              <Link className="login-link signup" onClick={logout}>
+                Logout
+              </Link>
+            </div>
+          )}
         </div>
         <div onClick={showSidebar} className="hamburger-menu">
           <div className="hamburger-line" />

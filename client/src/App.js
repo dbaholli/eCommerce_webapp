@@ -11,6 +11,7 @@ import RegisterComplete from "./components/Forms/RegisterComplete";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
+import ForgotPassword from "./components/Forms/ForgotPassword";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/registercomplete" component={RegisterComplete} />
         <Route exact path="/register/complete" component={RegisterComplete} />
+        <Route exact path="/forgot/password" component={ForgotPassword} />
       </Switch>
     </Router>
   );

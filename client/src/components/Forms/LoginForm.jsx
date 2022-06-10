@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLock } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useHistory } from "react-router-dom";
 import "./LoginForm.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
 
   let dispatch = useDispatch();
   let history = useHistory();
@@ -126,7 +132,7 @@ const LoginForm = () => {
           </button>
         </form>
         <p className="dont-have-acc">
-          Don't have an account ? <Link to="/register">Register</Link>
+          <Link to="/forgot/password">Forgot Password</Link>
         </p>
       </div>
       <div className="terms-privacy-contact">
