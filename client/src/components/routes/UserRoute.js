@@ -6,9 +6,11 @@ const UserRoute = ({ children, ...rest }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   return user && user.token ? (
-    <Route {...rest} render={() => children} />
+    <Route {...rest} />
   ) : (
-    <h1 style={{color: "red", marginTop: '10%', textAlign: 'center'}}>Loading ...</h1>
+    <h1 style={{ color: "red", marginTop: "10%", textAlign: "center" }}>
+      Loading ...
+    </h1>
   );
 };
 
