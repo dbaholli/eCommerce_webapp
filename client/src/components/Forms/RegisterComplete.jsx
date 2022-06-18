@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import "./RegisterForm.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLock } from "react-icons/bi";
-
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
+import { createupdateUser } from "../../functions/auth";
 
 const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { user } = useSelector((state) => ({ ...state }));
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegister"));
@@ -43,6 +47,22 @@ const RegisterComplete = ({ history }) => {
         const idTokenResult = await user.getIdTokenResult();
         // redux store
         console.log("user", user, "idTokenResult", idTokenResult);
+
+        createupdateUser(idTokenResult.token)
+          .then((res) =>
+            dispatch({
+              type: "LOGGED_IN_USER",
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            })
+          )
+          .catch((err) => console.log(err));
+
         // redirect
         history.push("/");
       }

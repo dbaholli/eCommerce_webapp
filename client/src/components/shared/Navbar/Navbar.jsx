@@ -55,27 +55,7 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${isSticky ? "sticky" : ""}`}>
-      {/* <div
-        className="nav-searchbar"
-        style={{ display: search ? "block" : "none", zIndex: zIndex }}
-      >
-        <div className="searchbar-content inline">
-          <input
-            type="search"
-            name=""
-            placeholder="Search the page . . ."
-            id="navsearch"
-          />
-          {search ? (
-            <Backdrop
-              click={showSearchBar}
-              zIndex={zIndex - 101}
-              display="block"
-            />
-          ) : null}
-          <MdArrowRightAlt style={{ display: "block !important" }} />
-        </div>
-      </div> */}
+      
       <div className="navbar-content">
         <div className="title-icon inline">
           <div className="nav-title inline">
