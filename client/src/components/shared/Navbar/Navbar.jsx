@@ -55,7 +55,6 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${isSticky ? "sticky" : ""}`}>
-      
       <div className="navbar-content">
         <div className="title-icon inline">
           <div className="nav-title inline">
@@ -124,7 +123,17 @@ const Navbar = () => {
 
           {user && (
             <div className="logout-container">
-              <p className="userdetailp">{user.email && user.email.split("@")[0]}</p>
+              <p className="userdetailp">
+                {user.email && user.email.split("@")[0]}
+                {user && user.role === "subscriber" && (
+                  <Link to="/user/history"> Dashboard</Link>
+                )}
+
+                {user && user.role === "admin" && (
+                  <Link to="/admin/dashboard">Dashboard</Link>
+                )}
+              </p>
+
               <Link className="login-link signup" onClick={logout}>
                 Logout
               </Link>
