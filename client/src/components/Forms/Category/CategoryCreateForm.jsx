@@ -9,11 +9,13 @@ import "./categoryform.scss";
 import { toast } from "react-toastify";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import LocalSearch from "../Search/LocalSearch";
 
 const CategoryForm = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     loadCategories();
@@ -52,6 +54,13 @@ const CategoryForm = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setKeyword(e.target.value.toLowerCase());
+  };
+
+  const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
+
   return (
     <div className="category-create-form">
       <h1>Create Category</h1>
@@ -70,7 +79,10 @@ const CategoryForm = () => {
         <input type="submit" value="Save" />
       </form>
       <hr />
-      {categories.map((c) => {
+
+      <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+
+      {categories.filter(searched(keyword)).map((c) => {
         return (
           <div key={c._id} className="category-list-container">
             <h2>{c.name}</h2>
