@@ -69,13 +69,13 @@ export const AdminData = [
   },
   {
     title: "Category",
-    path: "/admin/category ",
+    path: "/admin/category",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },
   {
     title: "Sub Category",
-    path: "/admin/subcategory",
+    path: "/admin/sub",
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: "nav-text",
   },

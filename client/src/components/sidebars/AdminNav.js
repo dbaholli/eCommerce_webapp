@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AdminData } from "./SidebarData";
 import "./adminsidebar.css";
@@ -10,8 +8,8 @@ import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 
 const AdminNav = () => {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  // const [sidebar, setSidebar] = useState(true);
+  // const showSidebar = () => setSidebar(!sidebar);
   let history = useHistory();
   let dispatch = useDispatch();
 
@@ -29,19 +27,10 @@ const AdminNav = () => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-          <h1>Admin Dashboard</h1>
-        </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
+        <div className="navbar"></div>
+        <nav className="nav-menu active">
+          <ul className="nav-menu-items">
+            <h1>Admin Dashboard</h1>
             {AdminData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
