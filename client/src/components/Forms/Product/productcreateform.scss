@@ -1,0 +1,58 @@
+.product-create-form {
+    margin-top: calc(75px + 2.5%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .createcategory-input {
+        width: 100%;
+        border: 1px solid #d8d8d8;
+        display: flex;
+        padding: 7.5px 5px 7.5px 15px;
+        gap: 10px;
+        border-radius: 10px;
+        svg {
+          flex-shrink: 0;
+          font-size: 25px;
+          fill: #7b7b7b;
+          align-self: center;
+        }
+        input {
+          flex: 1;
+          border: none;
+          outline: none;
+          padding: 0 0 0 5px;
+          &::placeholder {
+            font-size: 14px;
+            color: #7b7b7b;
+          }
+        }
+      }
+      input[type="submit"] {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size: 17px;
+        font-weight: 700;
+        padding: 5px 0;
+        color: #fff;
+        background-color: #325cd9;
+        &:hover {
+          background-color: #3d76ff;
+        }
+      }
+    }
+    .category-list-container {
+      display: flex;
+      align-items: center;
+      padding: 10px 10px;
+      border: 1px solid #3d76ff;
+      border-radius: 7px;
+    }
+  }
+  
