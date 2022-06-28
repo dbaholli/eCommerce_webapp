@@ -1,29 +1,24 @@
-.admin-dashboard-page {
-  // display: flex;
-  // align-items: center;
-  // width: 100%;
-  // justify-content: center;
+.admin-all-products {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   margin-top: calc(75px + 2.5%);
-  .admindashboard-content {
+  .products-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .products-container {
+    gap: 70px;
+    .card-container {
       margin-left: auto;
       margin-right: auto;
       width: 80%;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 3fr);
       grid-auto-rows: 1fr;
-      grid-gap: 20px 75px;
-      .card-container {
-        // 
-      }
+      grid-gap: 50px 75px;
+      border: 1px solid rgb(231, 231, 231);
     }
   }
 }
