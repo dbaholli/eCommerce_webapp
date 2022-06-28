@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { createProduct } from "../../../functions/product";
 import { getCategories, getCategorySubs } from "../../../functions/category";
 import { Select } from "antd";
+import FileUpload from "../FileUpload";
 
 const { Option } = Select;
 
@@ -184,8 +185,6 @@ const ProductCreateForm = () => {
                 </option>
               ))}
           </select>
-
-          {/* {JSON.stringify(category)} */}
         </div>
 
         {showSub && (
@@ -207,6 +206,9 @@ const ProductCreateForm = () => {
             </Select>
           </div>
         )}
+
+        <FileUpload values={values} setValues={setValues} />
+
         <input type="submit" value="Submit" />
       </form>
     </div>
