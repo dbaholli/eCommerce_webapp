@@ -1,0 +1,15 @@
+.products-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  h1 {
+    font-size: 35px;
+  }
+  .products-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 5px;
+  }
+}

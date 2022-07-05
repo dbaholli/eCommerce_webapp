@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeBanner = () => {
   return (
-    <div>HomeBanner</div>
+    <div>Welcome to eCommerce Web Application</div>
   )
 }
 
