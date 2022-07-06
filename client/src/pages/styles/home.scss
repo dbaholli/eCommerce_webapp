@@ -1,8 +1,10 @@
 .home-page {
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-top: 12.5%;
+  gap: 100px;
 }
