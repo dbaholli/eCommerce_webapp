@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
         <>
           <ShoppingCartOutlined />
           <br />
-          View Product
+          Add to Cart
         </>,
       ]}
     >

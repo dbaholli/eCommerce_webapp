@@ -67,3 +67,9 @@ input:-webkit-autofill:active {
   color: #fff;
   cursor: pointer;
 }
+
+.slider img {
+  height: 450px;
+  width: 350px;
+  object-fit: cover;
+}
