@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 // import "./styles/product.scss";
 import { getRelated } from "../../functions/product";
 import ProductCard from "../cards/ProductCard";
+import CategoryList from "../category/CategoryList";
+import SubList from "../sub/SubList";
 
 const Product = ({ slug }) => {
   const [product, setProduct] = useState({});
@@ -71,9 +73,9 @@ const Product = ({ slug }) => {
           )}
         </div>
       </div>
+      <hr />
     </div>
   );
 };
-
 
 export default Product;

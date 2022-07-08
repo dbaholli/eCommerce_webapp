@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { showAverage } from "../../functions/rating";
-import laptop from '../../images/laptop.png'
+import laptop from "../../images/laptop.png";
 
 const { Meta } = Card;
 

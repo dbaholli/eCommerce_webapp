@@ -28,6 +28,8 @@ import ProductCreate from "./pages/admin/product/ProductCreate";
 import AllProducts from "./pages/admin/product/AllProducts";
 import ProductUpdate from "./pages/admin/product/ProductUpdate";
 import ProductPage from "./pages/ProductPage";
+import CategoryHome from "./pages/CategoryHome";
+import SubHome from "./pages/SubHome";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -63,7 +65,7 @@ const App = () => {
       <Navbar />
       <ToastContainer />
       <Switch>
-        <Route exact path="/"  component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/registercomplete" component={RegisterComplete} />
@@ -83,10 +85,15 @@ const App = () => {
         <AdminRoute exact path="/admin/sub" component={SubCreate} />
         <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
-        <AdminRoute exact path="/admin/product/:slug" component={ProductUpdate} />
+        <AdminRoute
+          exact
+          path="/admin/product/:slug"
+          component={ProductUpdate}
+        />
         <AdminRoute exact path="/admin/products" component={AllProducts} />
-        <Route exact path="/product/:slug"  component={ProductPage} />
-
+        <Route exact path="/product/:slug" component={ProductPage} />
+        <Route exact path="/category/:slug" component={CategoryHome} />
+        <Route exact path="/sub/:slug" component={SubHome} />
       </Switch>
     </Router>
   );
