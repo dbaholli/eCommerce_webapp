@@ -30,6 +30,7 @@ import ProductUpdate from "./pages/admin/product/ProductUpdate";
 import ProductPage from "./pages/ProductPage";
 import CategoryHome from "./pages/CategoryHome";
 import SubHome from "./pages/SubHome";
+import Shop from "./pages/Shop";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -94,6 +95,7 @@ const App = () => {
         <Route exact path="/product/:slug" component={ProductPage} />
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
+        <Route exact path="/shop" component={Shop} />
       </Switch>
     </Router>
   );

@@ -11,6 +11,7 @@ import { FcShop } from "react-icons/fc";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Search from "../../Forms/Search";
 
 const Navbar = () => {
   const [search, setSearch] = useState(false);
@@ -68,38 +69,22 @@ const Navbar = () => {
         </div>
         <div className="navigation">
           <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              Products
+            <Link to="/shop" className="nav-link inline">
+              Shop
               <MdKeyboardArrowDown />
             </Link>
             {/* <ProductsMegamenu /> */}
-          </div>
-          <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              About us
-              <MdKeyboardArrowDown />
-            </Link>
-          </div>
-          <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              Categories
-              <MdKeyboardArrowDown />
-            </Link>
-          </div>
-          <div className="nav-link-container">
-            <Link to="/" className="nav-link inline">
-              Page
-              <MdKeyboardArrowDown />
-            </Link>
           </div>
         </div>
         <div className="nav-login-signup">
           {/* <div onClick={showSearchBar} className="search-box inline">
             <label htmlFor="navsearch">
-              <BiSearch className={`${isSticky ? "sticky-nav-colors" : ""}`} />
+            <BiSearch className={`${isSticky ? "sticky-nav-colors" : ""}`} />
             </label>
           </div> */}
-
+          <span className="float-right p-1">
+            <Search />
+          </span>
           {!user && (
             <div className="login-link-container">
               <Link

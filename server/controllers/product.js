@@ -170,11 +170,85 @@ const handleQuery = async (req, res, query) => {
   res.json(products);
 };
 
+const handlePrice = async (req, res, price) => {
+  try {
+    let products = await Product.find({
+      price: {
+        $gte: price[0],
+        $lte: price[1],
+      },
+    })
+      .populate("category", "_id name")
+      .populate("subs", "_id name")
+      .populate("postedBy", "_id name")
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const handleCategory = async (req, res, category) => {
+  try {
+    let products = await Product.find({ category })
+      .populate("category", "_id name")
+      .populate("subs", "_id name")
+      .populate("postedBy", "_id name")
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const handleStar = (req, res, stars) => {
+  Product.aggregate([
+    {
+      $project: {
+        document: "$$ROOT",
+        floorAverage: {
+          $floor: { $avg: "$ratings.star" },
+        },
+      },
+    },
+    { $match: { floorAverage: stars } },
+  ])
+    .limit(12)
+    .exec((err, aggregates) => {
+      if (err) console.log("AGGREGATE ERROR", err);
+      Product.find({ _id: aggregates })
+        .populate("category", "_id name")
+        .populate("subs", "_id name")
+        .populate("postedBy", "_id name")
+        .exec((err, products) => {
+          if (err) console.log("PRODUCT AGGREGATE ERROR", err);
+          res.json(products);
+        });
+    });
+};
+
 exports.searchFilters = async (req, res) => {
-  const { query } = req.body;
+  const { query, price, category, stars } = req.body;
 
   if (query) {
-    console.log("query", query);
+    console.log("query --->", query);
     await handleQuery(req, res, query);
+  }
+
+  if (price !== undefined) {
+    console.log("price ---> ", price);
+    await handlePrice(req, res, price);
+  }
+
+  if (category) {
+    console.log("category --> ", category);
+    await handleCategory(req, res, category);
+  }
+
+  if (stars) {
+    console.log("stars ---> ", stars);
+    await handleStar(req, res, stars);
   }
 };
