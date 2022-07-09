@@ -54,7 +54,7 @@ const Navbar = () => {
   const zIndex = 100;
 
   return (
-    <div className={`navbar ${isSticky ? "sticky" : ""}`}>
+    <div className={`navi ${isSticky ? "sticky" : ""}`}>
       <div className="navbar-content">
         <div className="title-icon inline">
           <div className="nav-title inline">

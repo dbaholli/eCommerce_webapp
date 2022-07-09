@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ToastContainer, toastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/shared/Navbar/Navbar";
 import Login from "./pages/Auth/Login";
