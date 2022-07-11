@@ -1,13 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
+import { Card, Tooltip } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { showAverage } from "../../functions/rating";
 import laptop from "../../images/laptop.png";
+import _ from "lodash";
+import { useSelector, useDispatch } from "react-redux";
 
 const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
+  const [tooltip, setTooltip] = useState("Click to add");
+
+  // redux
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    let cart = [];
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      // shto produkt te cart
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      // no duplicate
+      let unique = _.uniqWith(cart, _.isEqual);
+      // console.log('unique', unique)
+      localStorage.setItem("cart", JSON.stringify(unique));
+      setTooltip("Added");
+
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: unique,
+      });
+      // shfaq produktet ne side drawer
+      dispatch({
+        type: "SET_VISIBLE",
+        payload: true,
+      });
+    }
+  };
+
   const { images, title, description, slug, price } = product;
 
   return (
@@ -21,20 +58,20 @@ const ProductCard = ({ product }) => {
         cover={
           <img
             src={images && images.length ? images[0].url : laptop}
-            style={{ height: "175px", objectFit: "cover" }}
+            style={{ height: "150px", objectFit: "cover" }}
+            className="p-1"
           />
         }
         actions={[
           <Link to={`/product/${slug}`}>
-            <EyeOutlined />
-            <br />
-            View Product
+            <EyeOutlined className="text-warning" /> <br /> View Product
           </Link>,
-          <>
-            <ShoppingCartOutlined />
-            <br />
-            Add to Cart
-          </>,
+          <Tooltip title={tooltip}>
+            <a onClick={handleAddToCart}>
+              <ShoppingCartOutlined className="text-danger" /> <br /> Add to
+              Cart
+            </a>
+          </Tooltip>,
         ]}
       >
         <Meta
