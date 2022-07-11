@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const { user } = useSelector((state) => ({ ...state }));
-  let dispatch = useDispatch();
+  
   let history = useHistory();
 
   useEffect(() => {
@@ -26,6 +26,8 @@ const LoginForm = () => {
       if (user && user.token) history.push("/");
     }
   }, [user, history]);
+  
+  let dispatch = useDispatch();
 
   const roleBasedRedirect = (res) => {
     let intended = history.location.state;
