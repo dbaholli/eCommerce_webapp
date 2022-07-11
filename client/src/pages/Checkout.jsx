@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles/checkout.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserCart, emptyUserCart } from "../functions/user";
+import { getUserCart, emptyUserCart, saveUserAddress } from "../functions/user";
 import { toast } from "react-toastify";
 
 const Checkout = () => {
@@ -38,6 +38,7 @@ const Checkout = () => {
 
   const saveAddressToDb = () => {
     //
+    saveUserAddress();
   };
 
   return (

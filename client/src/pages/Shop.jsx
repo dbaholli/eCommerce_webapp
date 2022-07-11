@@ -73,6 +73,9 @@ const Shop = () => {
     // console.log('search input: ', text)
     const delayed = setTimeout(() => {
       fetchProducts({ query: text });
+      if (!text) {
+        loadAllProducts();
+      }
     }, 300);
     return () => clearTimeout(delayed);
   }, [text]);
