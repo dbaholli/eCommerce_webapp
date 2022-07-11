@@ -8,7 +8,7 @@ import Laptop from "../../images/laptop.png";
 // import "./styles/SingleProduct.scss";
 import ProductListItems from "./ProductListItems";
 import StarRating from "react-star-ratings";
-import RatingModal from "../modal/RatingModal";
+import RatingModal from "../Modal/RatingModal";
 import { showAverage } from "../../functions/rating";
 
 const { Meta } = Card;
