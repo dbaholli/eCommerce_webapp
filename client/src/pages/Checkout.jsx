@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styles/checkout.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserCart } from "../functions/user";
+import { getUserCart, emptyUserCart } from "../functions/user";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,23 @@ const Checkout = () => {
       setTotal(res.data.cartTotal);
     });
   }, []);
+
+  const emptyCart = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("cart");
+    }
+
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: [],
+    });
+
+    emptyUserCart(user.token).then((res) => {
+      setProducts([]);
+      setTotal(0);
+      toast.success("Cart is empty. Continue shopping.");
+    });
+  };
 
   const saveAddressToDb = () => {
     //
@@ -62,7 +80,13 @@ const Checkout = () => {
             </div>
 
             <div className="col-md-6">
-              <button className="btn btn-primary">Empty Cart</button>
+              <button
+                disabled={!products.length}
+                className="btn btn-primary"
+                onClick={emptyCart}
+              >
+                Empty Cart
+              </button>
             </div>
           </div>
         </div>
