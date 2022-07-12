@@ -5,8 +5,8 @@ import './styles/history.scss';
 const History = () => {
   return (
     <div className="user-history-page">
-      <h1>User page</h1>
       <UserNav />
+      <h1>User History</h1>
     </div>
   );
 };
