@@ -1,8 +1,9 @@
 import React from "react";
+import "./styles/paymentinfo.scss";
 
 const ShowPaymentInfo = ({ order }) => (
-  <div>
-    <p>
+  <div className="showpayment-info">
+    <div className="info-container">
       <span>Order Id: {order.paymentIntent.id}</span>
       {" / "}
       <span>
@@ -24,10 +25,10 @@ const ShowPaymentInfo = ({ order }) => (
         {new Date(order.paymentIntent.created * 1000).toLocaleString()}
       </span>
       {" / "}
-      <span className="badge bg-primary text-white">
+      <h1 className="badge bg-primary text-white">
         STATUS: {order.orderStatus}
-      </span>
-    </p>
+      </h1>
+    </div>
   </div>
 );
 

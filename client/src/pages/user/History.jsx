@@ -57,15 +57,23 @@ const History = () => {
     </table>
   );
 
+  // const showDownloadLink = (order) => (
+  //   <PDFDownloadLink
+  //     document={<Invoice order={order} />}
+  //     fileName="invoice.pdf"
+  //     className="btn btn-sm btn-block btn-outline-primary"
+  //   >
+  //     Download PDF
+  //   </PDFDownloadLink>
+  // );
+
   const showEachOrders = () =>
     orders.map((order, i) => (
       <div key={i} className="m-5 p-3 card">
         <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
         <div className="row">
-          <div className="col">
-            <p>PDF download</p>
-          </div>
+          {/* <div className="col">{showDownloadLink(order)}</div> */}
         </div>
       </div>
     ));
@@ -75,9 +83,6 @@ const History = () => {
       <UserNav />
       <div className="container">
         <div className="row">
-          {/* <div className="col-md-2">
-            <UserNav />
-          </div> */}
           <div className="col text-center">
             <h1>
               {orders.length > 0
