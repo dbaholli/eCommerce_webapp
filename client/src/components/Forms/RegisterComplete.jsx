@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./RegisterForm.scss";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLock } from "react-icons/bi";
@@ -8,12 +8,13 @@ import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { createupdateUser } from "../../functions/auth";
 
-const RegisterComplete = ({ history }) => {
+const RegisterComplete = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { user } = useSelector((state) => ({ ...state }));
   let dispatch = useDispatch();
+  let history = useHistory();
 
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForRegister"));
