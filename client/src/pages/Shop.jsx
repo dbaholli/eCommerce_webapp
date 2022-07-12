@@ -15,6 +15,7 @@ import {
   DownSquareOutlined,
   StarOutlined,
 } from "@ant-design/icons";
+import Navbar from "../components/shared/Navbar/Navbar";
 
 const { SubMenu, ItemGroup } = Menu;
 
@@ -294,6 +295,7 @@ const Shop = () => {
 
   return (
     <div className="shop-page">
+      <Navbar />
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3 pt-2">

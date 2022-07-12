@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { AdminData } from "./SidebarData";
 import "./adminsidebar.css";
@@ -27,7 +27,6 @@ const AdminNav = () => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar"></div>
         <nav className="nav-menu active">
           <ul className="nav-menu-items">
             <h1>Admin Dashboard</h1>

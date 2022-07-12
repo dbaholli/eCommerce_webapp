@@ -5,6 +5,7 @@ import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import "./styles/cart.scss";
 import { useHistory } from "react-router-dom";
 import { userCart } from "../functions/user";
+import Navbar from "../components/shared/Navbar/Navbar";
 
 const Cart = () => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -51,6 +52,7 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
+      <Navbar />
       <div className="container-fluid pt-2">
         <div className="row">
           <div className="col-md-8">
