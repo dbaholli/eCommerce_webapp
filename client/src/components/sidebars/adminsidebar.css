@@ -4,22 +4,18 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  /* margin-top: calc(75px + 2.5%); */
 }
-
 .admin-dashboard-page .navbar h1 {
   font-size: 25px;
   color: #fff;
   display: flex;
   margin-left: 1%;
 }
-
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
 }
-
 .nav-menu {
   background-color: #416aff;
   width: 250px;
@@ -31,12 +27,31 @@
   left: -100%;
   transition: 850ms;
 }
-
 .nav-menu.active {
   left: 0;
   transition: 350ms;
 }
-
+.logout-container .logout-dashboard {
+  background: #416aff;
+  color: #fff;
+  display: flex;
+  font-weight: 700;
+  align-items: center;
+  width: fit-content;
+  transition: all 0.8s;
+  padding: 1em 1.5em;
+  border-radius: 7.5px;
+  font-size: 16px;
+}
+@media (max-width: 1450px) {
+  .logout-container .logout-dashboard {
+    padding: 12.5px 30px;
+    font-size: 15px;
+ }
+}
+.logout-container .logout-dashboard:hover {
+  box-shadow: 0 80px 0 0 rgba(0, 0, 0, 0.25) inset, 0 -80px 0 0 rgba(0, 0, 0, 0.25) inset;
+}
 .nav-text {
   display: flex;
   justify-content: start;
@@ -45,7 +60,6 @@
   list-style: none;
   height: 60px;
 }
-
 .nav-text a {
   text-decoration: none;
   color: #f5f5f5;
@@ -57,15 +71,12 @@
   padding: 0 16px;
   border-radius: 4px;
 }
-
 .nav-text a:hover {
   background-color: #1a83ff;
 }
-
 .nav-menu-items {
   width: 100%;
 }
-
 .navbar-toggle {
   background-color: #060b26;
   width: 100%;
@@ -74,7 +85,6 @@
   justify-content: start;
   align-items: center;
 }
-
 span {
   margin-left: 16px;
 }

@@ -17,7 +17,7 @@ const Orders = ({ orders, handleStatusChange }) => {
       </thead>
 
       <tbody>
-        {order.products.map((p, i) => (
+        {/* {order.products.map((p, i) => (
           <tr key={i}>
             <td>
               <b>{p.product.title}</b>
@@ -34,7 +34,7 @@ const Orders = ({ orders, handleStatusChange }) => {
               )}
             </td>
           </tr>
-        ))}
+        ))} */}
       </tbody>
     </table>
   );
@@ -58,6 +58,7 @@ const Orders = ({ orders, handleStatusChange }) => {
                   name="status"
                 >
                   <option value="Not Processed">Not Processed</option>
+                  <option value="Cash On Delivery">Cash On Delivery</option>
                   <option value="Processing">Processing</option>
                   <option value="Dispatched">Dispatched</option>
                   <option value="Cancelled">Cancelled</option>

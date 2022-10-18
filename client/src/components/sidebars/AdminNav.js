@@ -42,7 +42,7 @@ const AdminNav = () => {
             })}
             {user && (
               <div className="logout-container">
-                <Link className="login-link signup" onClick={logout}>
+                <Link className="logout-dashboard" onClick={logout}>
                   Logout
                 </Link>
               </div>
